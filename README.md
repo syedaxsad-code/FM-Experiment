@@ -65,17 +65,50 @@ MODEL GRAPH:
 
 
 Program
+```
+// Parameters
+Am = 9.4;        // Message amplitude
+Fm = 330;         // Message frequency (Hz)
+B  = 6.3;         // Modulation index
+Ac = 18.8;          // Carrier amplitude
+Fc = 3300;        // Carrier frequency (Hz)
+Fs = 33000;       // Sampling frequency
+T  = 0:1/Fs:2/Fm; // Time vector (two cycles of message)
 
+// Message signal
+em = Am * cos(2*%pi*Fm*T);
+subplot(3,1,1);
+plot(T, em);
+xtitle("Message Signal");
+xgrid();
+// Carrier signal
+ec = Ac * cos(2*%pi*Fc*T);
+subplot(3,1,2);
+plot(T, ec);
+xtitle("Carrier Signal");
+xgrid();
+// FM signal
+efm = Ac * cos( (2*%pi*Fc*T) + (B * sin(2*%pi*Fm*T)) );
+subplot(3,1,3);
+plot(T, efm);
+xtitle("FM Signal");
+xgrid();
+```
 
 Output Waveform
+
+![WhatsApp Image 2025-12-02 at 23 30 11_91fbbf44](https://github.com/user-attachments/assets/5e7dd496-c6f5-4411-bdd4-a793834ab3df)
 
 
 
 Tabulation
 
+![WhatsApp Image 2025-12-02 at 23 57 19_320fe933](https://github.com/user-attachments/assets/43ddf63f-ced8-44cb-bea0-a1116733becc)
+
 
 
 Calculation
+![WhatsApp Image 2025-12-02 at 23 58 43_a58c9d42](https://github.com/user-attachments/assets/ebfe3443-41f2-44d7-a044-bae1b3699c81)
 
 
 
